@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina Villa Canggu: Organic Social, Batch 1</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #13162B;
+    --gold: #C9A227;
+    --gold-pale: #F5EBC8;
+    --bone: #F7F3EA;
+    --bone-dark: #EDE7D6;
+    --white: #FFFFFF;
+    --text: #2C2F45;
+    --muted: #6B6F85;
+    --border: #DDD8CC;
+  }
+  html { font-size: 16px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bone);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .cover {
+    background: var(--ink);
+    color: var(--white);
+    padding: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(201, 162, 39, 0.12);
+  }
+  .cover-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .cover h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; }
+  .cover h1 span { color: var(--gold); }
+  .cover-sub { font-size: 1.05rem; color: rgba(247,243,234,0.75); max-width: 620px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 32px; }
+  .main { padding: 48px 0 80px; }
+
+  .rules {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+  }
+  .rules-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .rules ul { list-style: none; }
+  .rules li { font-size: 0.9rem; padding: 4px 0; display: flex; gap: 8px; }
+  .rules li::before { content: '•'; color: var(--gold); flex-shrink: 0; }
+
+  .week-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold-pale);
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin: 32px 0 20px;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .post-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .post-img-wrap {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--bone-dark);
+  }
+  .post-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-body { padding: 18px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .post-day {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .post-format {
+    font-size: 0.68rem;
+    color: var(--muted);
+    background: var(--bone);
+    border: 1px solid var(--border);
+    padding: 2px 9px;
+    border-radius: 12px;
+  }
+  .post-pillar {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .post-caption {
+    font-size: 0.875rem;
+    color: var(--text);
+    line-height: 1.6;
+    white-space: pre-line;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+  .post-hashtags {
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .notes {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 48px;
+  }
+  .notes-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+  .notes ul { list-style: none; }
+  .notes li { font-size: 0.875rem; color: rgba(247,243,234,0.85); padding: 6px 0; line-height: 1.6; }
+  .notes li::before { content: '→ '; color: var(--gold); font-weight: 700; }
+
+  @media (max-width: 860px) {
+    .post-grid { grid-template-columns: 1fr; }
+    .cover { padding: 40px 24px; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-eyebrow">Organic Social: Batch 1 (Weeks 1-4)</div>
+  <h1>Lumina Villa <span>Canggu</span></h1>
+  <p class="cover-sub">3x/week, Instagram-first. Sophisticated, warm, understated. "Nothing's too hard, we welcome you." Every post drives to link in bio / WhatsApp direct. Zero OTA mentions, by design.</p>
+</div>
+
+<div class="main">
+  <div class="container">
+
+    <div class="rules">
+      <div class="rules-label">Working Rules</div>
+      <ul>
+        <li>Cadence: Mon / Wed / Fri, Instagram primary. Reels for reach, grid for aesthetic, Stories for concierge personality.</li>
+        <li>Pillars rotate: property spotlight, sensory/place, audience fit (families, groups, digital nomads), service ethos, countdown/behind-the-scenes.</li>
+        <li>No Airbnb/Booking.com/OTA mentions in organic copy. Bio link and WhatsApp are the only booking paths referenced.</li>
+        <li>Pin every published image to Pinterest same day (P3.5). Long-tail Google Image and direct traffic compounding.</li>
+      </ul>
+    </div>
+
+    <div class="week-label">Week 1</div>
+    <div class="post-grid">
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-pool-1.jpg" alt="Pool"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Mon · Post 1</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Countdown / Announcement</div>
+          <div class="post-caption">Something new is settling into the rice fields of Canggu.
+
+Three bedrooms. A heated pool. A sauna for the evenings that need one. Views that change with the light, from every room.
+
+Lumina Villa opens next month. Link in bio to be first to know when dates go live. No third parties, no waiting on a listing to update. Just us.</div>
+          <div class="post-hashtags">#LuminaVillaCanggu #CangguVilla #BaliVilla #PrivatePoolVilla #CangguBali</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-bedroom-2-1.jpg" alt="Bedroom rice field view"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Wed · Post 2</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Sensory / Place</div>
+          <div class="post-caption">Wake up to rice fields, not rooftops.
+
+Babakan Kubu sits close enough to Canggu's cafés and surf to feel connected, far enough to hear the fields instead of the traffic. Every bedroom looks out on green.
+
+Save this for the trip you're already planning.</div>
+          <div class="post-hashtags">#RiceFieldView #CangguBali #QuietSideOfCanggu #BaliRetreat</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-outdoor-terrace-1.jpg" alt="Outdoor entertainment area"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Fri · Post 3</span><span class="post-format">Carousel · 1080×1080</span></div>
+          <div class="post-pillar">Service Ethos</div>
+          <div class="post-caption">You don't plan a holiday to keep managing one.
+
+Arrival transfers, a chef for the night you don't want to cook, someone who already knows the best surf break for beginners. All arranged before you land. Nothing's too hard. That's the job.
+
+Direct enquiries get first access to opening dates. Link in bio.</div>
+          <div class="post-hashtags">#ConciergeService #CangguVilla #BaliTravel #LuminaVillaCanggu</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-label">Week 2</div>
+    <div class="post-grid">
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-sauna-1.jpg" alt="Sauna"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Mon · Post 4</span><span class="post-format">Reel 15-20s · 1080×1920</span></div>
+          <div class="post-pillar">Property Spotlight: Wellness</div>
+          <div class="post-caption">Heated pool. Private sauna. Rice fields either side.
+
+Built for the days that need doing nothing at all.</div>
+          <div class="post-hashtags">#HeatedPool #PrivateSauna #BaliWellness #CangguVilla</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-bedroom-3-1.jpg" alt="Bedroom three"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Wed · Post 5</span><span class="post-format">Carousel · 1080×1080</span></div>
+          <div class="post-pillar">Audience Fit: Families / Groups</div>
+          <div class="post-caption">Three bedrooms. Three ensuites. Zero compromises on who gets the good bathroom.
+
+Built for families who want space, and groups of friends who want their own doors to close. Everyone gets a view. Everyone gets privacy.</div>
+          <div class="post-hashtags">#FamilyTravelBali #CangguVillaBali #GroupTravel #BaliWithKids</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-kitchen-1.jpg" alt="Kitchen"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Fri · Post 6</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Audience Fit: Digital Nomads</div>
+          <div class="post-caption">Fast wifi. A kitchenette that actually works for more than making toast. A quiet corner for the calls, and a pool for after them.
+
+Whether it's three nights or three months, book direct and skip the middleman: better rates, and a concierge who already knows your name by day two.
+
+Link in bio to enquire.</div>
+          <div class="post-hashtags">#WorkFromBali #DigitalNomadBali #CangguCoworking #BaliVillaLife</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-label">Week 3</div>
+    <div class="post-grid">
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-outdoor-bath-1.jpg" alt="Outdoor bath"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Mon · Post 7</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Sensory / Place</div>
+          <div class="post-caption">A bath with a rice field view instead of a wall.
+
+No rush to be anywhere. The fields do not check the time and neither should you.</div>
+          <div class="post-hashtags">#OutdoorBath #CangguVilla #SlowTravel #BaliVilla</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-lounge-1.jpg" alt="Lounge"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Wed · Post 8</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Audience Fit: Groups of Friends</div>
+          <div class="post-caption">The best trips have one room everyone ends up in.
+
+Here it's this one. Cards after dinner, one more drink, the conversation that goes too late. Built for the group that actually wants to spend the trip together.</div>
+          <div class="post-hashtags">#GroupTravelBali #CangguVilla #FriendsTrip #BaliVillaLife</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-yoga-deck-1.jpg" alt="Yoga deck"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Fri · Post 9</span><span class="post-format">Reel 15-20s · 1080×1920</span></div>
+          <div class="post-pillar">Audience Fit: Wellness / Nomads</div>
+          <div class="post-caption">Mat down, rice fields up.
+
+A morning session before the calls start, or instead of them. Ask the concierge to arrange an instructor. Nothing's too hard.</div>
+          <div class="post-hashtags">#YogaBali #WorkFromBali #CangguWellness #BaliVillaLife</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="week-label">Week 4</div>
+    <div class="post-grid">
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-pool-3.jpg" alt="Pool"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Mon · Post 10</span><span class="post-format">Carousel · 1080×1080</span></div>
+          <div class="post-pillar">Property Spotlight: Families</div>
+          <div class="post-caption">A pool the kids can't wear out and parents can actually relax next to.
+
+Heated, private, fenced by rice fields instead of a hotel car park. This is the whole point of a villa over a resort.</div>
+          <div class="post-hashtags">#FamilyTravelBali #HeatedPool #CangguVillaBali #BaliWithKids</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-kitchen-2.jpg" alt="Kitchen"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Wed · Post 11</span><span class="post-format">Image · 1080×1080</span></div>
+          <div class="post-pillar">Service Ethos</div>
+          <div class="post-caption">Some nights you want a restaurant. Some nights you want a chef in your own kitchen and nowhere to be after.
+
+Both are one message away. Nothing's too hard. That's what the concierge is for.</div>
+          <div class="post-hashtags">#PrivateChef #ConciergeService #CangguVilla #LuminaVillaCanggu</div>
+        </div>
+      </div>
+
+      <div class="post-card">
+        <div class="post-img-wrap"><img src="../img/villa-master-bedroom-1.jpg" alt="Master bedroom"></div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-day">Fri · Post 12</span><span class="post-format">Carousel · 1080×1080</span></div>
+          <div class="post-pillar">Direct Booking Push</div>
+          <div class="post-caption">Opening dates are live.
+
+Three ensuite bedrooms, a heated pool, a sauna, rice fields on every side, and a direct line to us, not a listing. Book direct for the best rate and a concierge who knows you're coming before you arrive.
+
+Link in bio to check dates.</div>
+          <div class="post-hashtags">#LuminaVillaCanggu #BookDirect #CangguVilla #BaliVillaOpening</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="notes">
+      <div class="notes-label">Notes for Next Batch</div>
+      <ul>
+        <li>Swap in guest UGC once villa opens (P2.2). No seeded reviews or testimonials before real guests exist.</li>
+        <li>Post 3 copy stays generic ("someone who already knows...") until concierge partners are confirmed (P1.4c, still pending). Swap in real names once locked, for a stronger trust signal.</li>
+        <li>Rice field timelapse (P3.5), once filmed, becomes the strongest Reel asset in the library. Slot in as soon as available, likely replacing a static post.</li>
+        <li>Keep OTA channels entirely out of organic social copy. Bio link and WhatsApp are the only booking paths referenced, by design.</li>
+        <li>Post 12 assumes opening dates are confirmed by week 4. Hold or reword if the launch timeline slips.</li>
+        <li>Unused assets remaining for batch 3: Pool 4, Bedroom 2.2/2.3, Bedroom 3.1/3.2/3.3, Master Ensuite, Sauna 2, Business Centre, Yoga 2/3.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
